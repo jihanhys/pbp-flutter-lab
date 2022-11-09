@@ -125,7 +125,7 @@ class _ProgramCounterState extends State<ProgramCounter> {
         ),
       ),
       floatingActionButton: Padding(
-        padding : const EdgeInsets.all(20),
+        padding : const EdgeInsets.fromLTRB(40,10,10,10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
