@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
-import 'package:counter_7/show.dart';
+import 'package:counter_7/page/show.dart';
+import 'package:counter_7/page/mywatchlist.dart';
 
 var budgetList = [];
 
@@ -43,37 +44,47 @@ class _MyFormPageState extends State<MyFormPage> {
             drawer: Drawer(
                 child: Column(
                     children: [
-                    // Menambahkan clickable menu
-                    ListTile(
-                        title: const Text('Counter'),
-                        onTap: () {
-                        // Route menu ke halaman utama
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const ProgramCounter()),
-                        );
-                        },
-                    ),
-                    ListTile(
-                        title: const Text('Tambah Budget'),
-                        onTap: () {
-                        // Route menu ke halaman form
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const MyFormPage()),
-                        );
-                        },
-                    ),
-                    ListTile(
-                        title: const Text('Data Budget'),
-                        onTap: () {
-                        // Route menu ke halaman form
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => const MyShowPage()),
-                        );
-                        },
-                    ),
+                        // Menambahkan clickable menu
+                        ListTile(
+                            title: const Text('Counter'),
+                            onTap: () {
+                            // Route menu ke halaman utama
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const ProgramCounter()),
+                            );
+                            },
+                        ),
+                        ListTile(
+                            title: const Text('Tambah Budget'),
+                            onTap: () {
+                            // Route menu ke halaman form
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const MyFormPage()),
+                            );
+                            },
+                        ),
+                        ListTile(
+                            title: const Text('Data Budget'),
+                            onTap: () {
+                            // Route menu ke halaman form
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const MyShowPage()),
+                            );
+                            },
+                        ),
+                        ListTile(
+                            title: const Text('My Watch List'),
+                            onTap: () {
+                            // Route menu ke halaman data
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const MyWatchList()),
+                            );
+                            },
+                        ),
                     ],
                 ),
             ),

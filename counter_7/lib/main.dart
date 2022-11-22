@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:counter_7/form.dart';
-import 'package:counter_7/show.dart';
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/show.dart';
+import 'package:counter_7/page/mywatchlist.dart';
 
 void main() {
   runApp(const MyApp());
@@ -98,6 +99,16 @@ class _ProgramCounterState extends State<ProgramCounter> {
                     MaterialPageRoute(builder: (context) => const MyShowPage()),
                   );
                 },
+              ),
+              ListTile(
+                  title: const Text('My Watch List'),
+                  onTap: () {
+                  // Route menu ke halaman data
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MyWatchList()),
+                  );
+                  },
               ),
             ],
           ),

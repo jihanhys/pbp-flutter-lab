@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:counter_7/main.dart';
-import 'package:counter_7/form.dart' as form;
-import 'package:counter_7/form.dart';
+import 'package:counter_7/page/form.dart' as form;
+import 'package:counter_7/page/form.dart';
+import 'package:counter_7/page/mywatchlist.dart';
 
 var formData = form.budgetList;
 
@@ -57,6 +58,16 @@ class _MyShowPageState extends State<MyShowPage> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const MyShowPage()),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('My Watch List'),
+                onTap: () {
+                  // Route menu ke halaman data
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyWatchList()),
                   );
                 },
               ),
