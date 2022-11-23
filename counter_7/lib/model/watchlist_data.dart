@@ -3,6 +3,7 @@
 //     final watchList = watchListFromJson(jsonString);
 
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 List<WatchList> watchListFromJson(String str) => List<WatchList>.from(json.decode(str).map((x) => WatchList.fromJson(x)));
 
@@ -15,12 +16,12 @@ class WatchList {
         required this.fields,
     });
 
-    Model model;
+    Model? model;
     int pk;
     Fields fields;
 
     factory WatchList.fromJson(Map<String, dynamic> json) => WatchList(
-        model: modelValues.map[json["model"]]!,
+        model: modelValues.map[json["model"]],
         pk: json["pk"],
         fields: Fields.fromJson(json["fields"]),
     );
@@ -30,7 +31,34 @@ class WatchList {
         "pk": pk,
         "fields": fields.toJson(),
     };
+
+    static Future<List<WatchList>> fetchWatchlist() async {
+        var url = Uri.parse('https://tugas2-katalog-han.herokuapp.com/mywatchlist/json');
+        //print(url);
+        var response = await http.get(
+        url,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json",
+        },
+        );
+        //print(response);
+        // melakukan decode response menjadi bentuk json
+        var data = jsonDecode(utf8.decode(response.bodyBytes));
+        //print(data);
+        // melakukan konversi data json menjadi object Watchlist
+        List<WatchList> watchlist = [];
+        for (var d in data) {
+        if (d != null) {
+            watchlist.add(WatchList.fromJson(d));
+            //print(d);
+        }
+        }
+        return watchlist;
+    }
 }
+
+
 
 class Fields {
     Fields({
@@ -41,14 +69,14 @@ class Fields {
         required this.review,
     });
 
-    Watched watched;
+    Watched? watched;
     String title;
     int rating;
     String releaseDate;
     String review;
 
     factory Fields.fromJson(Map<String, dynamic> json) => Fields(
-        watched: watchedValues.map[json["watched"]]!,
+        watched: watchedValues.map[json["watched"]],
         title: json["title"],
         rating: json["rating"],
         releaseDate: json["release_date"],
@@ -79,7 +107,7 @@ final modelValues = EnumValues({
 
 class EnumValues<T> {
     Map<String, T> map;
-    Map<T, String> reverseMap = {};
+    late Map<T, String> reverseMap;
 
     EnumValues(this.map);
 
