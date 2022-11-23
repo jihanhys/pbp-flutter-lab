@@ -145,6 +145,21 @@ class _MyDetailState extends State<MyDetail> {
                     ],
                     ),
                 ),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(10,70,10,10),
+                    child: TextButton(
+                        onPressed: (){
+                            Navigator.pop(context);
+                        },
+                        child: Text(
+                            "Back",
+                        ),
+                        style: TextButton.styleFrom(
+                            backgroundColor: Colors.blue,
+                            primary: Colors.white,
+                        ),
+                    ),
+                ),
             ],
         ),
     );
