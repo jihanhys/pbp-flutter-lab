@@ -1,3 +1,22 @@
+# Pertanyaan Tugas 9
+
+Nama    : Jihan Hanifah Yasmin
+NPM     : 2106701955
+
+### Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Bisa, yaitu dengan code generation yang biasa digunakan untuk proyek skala menengah sampai besar. JSON serialization dengan code generation berarti mempunyai external library yang membuatkan boilerplate untuk kode-kode kita. Pengambilan data JSON dengan metode ini lebih baik untuk proyek berskala besar karena typo saat mengakses fields JSON sudah ditangkap saat waktu compile. Contoh library yang dapat digunakan yaitu `json_serializable` dan `built_value`.
+
+### Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+Widget yang digunakan untuk tugas kali ini kurang lebih ada beberapa yang sama seperti tugas minggu lalu, seperti widget drawer untuk side bar. Perbedaannya adalah untuk tugas 9 saya menggunakan baru bernama `FutureBuilder`. Widget `FutureBuilder` berfungsi untuk mengeksekusi fungsi asinkronus, dan dari fungsi tersebut, dengan bantuan widget `FutureBuilder` UI dari page yang dilihat user akan ter-update. Pada tugas kali ini fungsi asinkronus terdapat di file watchlist_data.dart untuk fetch data json. Fungsi tersebut akan dijelaskan lebih lanjut pada jawaban dari pertanyaan berikutnya.
+
+### Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+Fetch data JSON dari internet dapat dilakukan dengan method get dari package http. Untuk melakukan request HTTP GET dari suatu website, kita harus menyediakan URI untuk source data JSON-nya, yang kemudian di-parse menjadi url. Url tersebut menspesifikasikan protokol HTTP. Ketika kita memasukkan address dari HTTP ke web browser, browser tersebut akan mengirim request HTTP GET ke web server. Kemudian, web server mengirimkan response HTTP yang mengandung konten dari page tersebut, atau bisa juga pesan error.Response tersebut kemudian di-decode, dan untuk tugas ini dimasukkan ke dalam list untuk nantinya ditampilkan di aplikasi.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+Cara saya mengimplementasikan checklist tersebut yaitu pertama saya refactor file-file ke dalam folder terpisah. Kemudian saya membuat tiga file baru yaitu mywatchlist.dart, watchlist_data.dart, dan detail.dart.
+Pada file mywatchlist.dart, ditambahkan drawer agar user bisa berpindah-pindah ke page lain melalui side bar. Lalu, file watchlist_data.dart berisi boilerplate untuk memproses data JSON yang diambil. Data JSON diambil dari link aplikasi heroku untuk tugas 3. Kemudian ditampilkan dalam sebuah card untuk masing-masing data (judulnya saja).
+File detail.dart mengandung informasi lengkap mengenai datanya, yang dapat diakses jika click card pada halaman My Watch List (menggunakan fungsi push). Setiap atribut dari data saya tempatkan dalam sebuah padding agar lebih rapih. Terakhir ditambahkan tombol back dengan memanfaatkan fungsi pop.
+
 # Pertanyaan Tugas 8
 
 Nama    : Jihan Hanifah Yasmin
